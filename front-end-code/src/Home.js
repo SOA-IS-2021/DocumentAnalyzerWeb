@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from "./components/Table"
 import UploadFiles from "./components/UploadFiles"
-import {getProcessedFilesNames} from "./services/api";
+import {employeesInFile, getProcessedFilesNames} from "./services/api";
 
 const Home = ({handleLogOut}) => {
     return(
@@ -28,13 +28,7 @@ const Home = ({handleLogOut}) => {
             </div>
 
             <div className="ui raised padded text container segment">
-              <Table
-                query={{
-                  documents: [
-                  { file: 'gg.pdf', employee: 'Manuel'},
-                  { file: 'hh.docx', employee: 'Juan'} ],
-                  mode : 'Search Results'}} 
-              />
+              <Table for="documents-table" query={employeesInFile}/>
             </div>
           </div>
                       

@@ -6,8 +6,26 @@ class UploadFile extends React.Component{
   constructor(props) {
     super(props) 
     this.state = props.query
-  } 
+  }
 
+  fileHandler(event){
+
+    let fileReader = new FileReader();
+    let file = event.target.files[0];
+    let fileName = file.name;
+    fileReader.readAsDataURL(file);
+    fileReader.onload = function(fileLoadedEvent){
+      let fileData  = fileLoadedEvent.target.result;
+      console.log(fileData);
+      console.log (fileName);
+
+      // Llamar a la función del post  con fileData y fileName de parámetros
+      postFile({
+        "name": fileName, // fileName
+        "data": fileData // data must be a Base64 encoded string
+      });
+    };
+  }
 
   render(){          
     return(
@@ -29,9 +47,10 @@ class UploadFile extends React.Component{
       <div className="inline">                
         <input 
           type="file" id="add" name="add" 
-          accept=".pdf,.docx,.txt">                   
+          accept=".pdf,.docx,.txt"
+          onChange = {this.fileHandler}>
         </input>               
-        <button className="ui secondary button" onClick={postFile()}> Upload </button>
+        <button className="ui secondary button"> Upload </button>
       </div>
     </div>
     )

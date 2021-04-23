@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from "./components/Table"
 import UploadFiles from "./components/UploadFiles"
+import {getProcessedFilesNames} from "./services/api";
 
 const Home = ({handleLogOut}) => {
     return(
@@ -23,7 +24,7 @@ const Home = ({handleLogOut}) => {
                 <i class="file outline icon"></i>
                 <h3>Search for employees</h3> 
               </div>
-              <div class="ui primary button">Select Document</div>
+              <div class="ui primary button" onClick={getProcessedFilesNames}>Select Document</div>
             </div>
 
             <div className="ui raised padded text container segment">

@@ -1,4 +1,5 @@
 import React from "react";
+import {postFile} from "../services/api";
 
 class UploadFile extends React.Component{ 
 
@@ -30,7 +31,7 @@ class UploadFile extends React.Component{
           type="file" id="add" name="add" 
           accept=".pdf,.docx,.txt">                   
         </input>               
-        <button className="ui secondary button"> Upload </button>  
+        <button className="ui secondary button" onClick={postFile()}> Upload </button>
       </div>
     </div>
     )
